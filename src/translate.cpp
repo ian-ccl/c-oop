@@ -4,23 +4,9 @@
 #include <cstddef>
 #include <algorithm>
 #include <iostream>
-#define INDEBUG 1
-
-struct color_t {
-    static constexpr const char* yellow = "\033[33m";
-    static constexpr const char* red    = "\033[31m";
-    const char* s = color_t::red;
-    const char* const get() {
-        if (s == color_t::red)
-            s = color_t::yellow;
-        else
-            s = color_t::red;
-        return s;
-    }
-} color;
 
 #if INDEBUG
-    #define log(x) do { std::cout << color.get() << x << "\033[0m"; } while(0)
+    #define log(x) do { std::cout << "\033[0m" << x << "\033[33m"; } while(0)
 #else
     #define log(x)
 #endif
@@ -546,6 +532,7 @@ std::string translate_third(const std::string &coopCode, generic_classes_t *gene
                 if (i < n && (isalpha((unsigned char)coopCode[i]) || coopCode[i] == '_')) {
                     name += coopCode[i];
                 }
+                i++;
                 for (;i < n && (isalnum((unsigned char)coopCode[i]) || coopCode[i] == '_'); i++) {
                     name += coopCode[i];
                 }

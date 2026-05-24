@@ -19,6 +19,9 @@ bool program(const std::vector<std::string>& args) {
 }
 
 int main(int argc, char** argv) {
+    #if INDEBUG
+        std::cout << "\033[33m";
+    #endif
     if (argc == 1) {
         std::cerr << "use: " << *argv << " files1.coop [file2.coop ...]";
         return 1;

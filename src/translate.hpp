@@ -2,6 +2,7 @@
 #include <string>
 #include <map>
 #include <memory>
+#define INDEBUG 1
 typedef std::map<
     std::string,
     std::pair<

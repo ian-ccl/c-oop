@@ -9,14 +9,13 @@ generic_class std::Result<T> {
     int err;
 }; 
 
-generic_class math::Vec<N> {
-    repeat(N, float v$i;)
+generic_class math::vec4<T> {
+    repeat(4, T v$i;)
 };
 @msg r
 allowapply std::Result<int> as intResult
 @msg v
-allowapply math::Vec<4> as vec4
-
+allowapply math::vec4<float> as vec4
 class math::Point {
     float x;
     float y;

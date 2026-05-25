@@ -217,6 +217,8 @@ std::string translate_first(const std::string &coopCode, generic_classes_t *gene
                     method += coopCode[i];
                     i++;
                 }
+                method += ')';
+                i++;
                 
                 std::string expr;
                 size_t pos = method.find('(');
@@ -405,7 +407,7 @@ std::string translate_second(const std::string &coopCode, generic_classes_t *gen
                     std::string inst = replace(replace(def, "::", "_"), arg_name.c_str(), type.c_str());
                     res += "typedef struct " + applyname + " " + applyname + "; " + "struct " + applyname + "{" + inst + ";";
                 } else {
-                    res += "/* could not find generic class " + name + " to apply with type " + type + " and apply name " + applyname + " */";
+                    std::cout << "could not find generic class " << name << " to apply with type " << type << " and apply name " << applyname << "\n";
                 }
                 for (i; i < n && isspace((unsigned char)coopCode[i]); i++) {}
                 continue;
